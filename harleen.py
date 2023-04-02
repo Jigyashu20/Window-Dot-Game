@@ -263,8 +263,8 @@ while running:
         win.blit(msgimg, (rect.centerx - msgimg.get_width() / 2, rect.centery + 20))
 
     pygame.draw.rect(win, WHITE, (0, 0, WIDTH, HEIGHT), 2, border_radius=10)
-    if pos1 and pos2:
-        print(pos1, pos2, ccell[0][0], ccell[0][1], ccell[1][0], ccell[1][1])
+#     if pos1 and pos2:
+#         print(pos1, pos2, ccell[0][0], ccell[0][1], ccell[1][0], ccell[1][1])
     pygame.display.update()
 
 
