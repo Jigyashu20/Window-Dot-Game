@@ -194,13 +194,17 @@ while running:
 
     ccell = [[-1, -1],[-1, -1]]
     if pos1 and pos2:
-        ccell[0][0] , ccell[0][1], ccell[1][0] , ccell[1][1]= find_cell( pos1, pos2)
-        if ccell[0][0] != -1:
-            cells[ccell[0][0]].sides[ccell[0][1]] = True
-        if ccell[1][0] != -1:
-            cells[ccell[1][0]].sides[ccell[1][1]] = True
+        if (pos1[0]==pos2[0] and abs(pos1[1]-pos2[1])==50) or (pos1[1]==pos2[1] and abs(pos1[0]-pos2[0])==50):
+            ccell[0][0] , ccell[0][1], ccell[1][0] , ccell[1][1]= find_cell( pos1, pos2)
+            if ccell[0][0] != -1:
+                cells[ccell[0][0]].sides[ccell[0][1]] = True
+            if ccell[1][0] != -1:
+                cells[ccell[1][0]].sides[ccell[1][1]] = True
 
-        next_turn=True    
+            next_turn=True    
+        else:
+            pos1 = pos2
+            pos2 = None    
 
        
     for cell in cells:
@@ -259,7 +263,7 @@ while running:
         win.blit(msgimg, (rect.centerx - msgimg.get_width() / 2, rect.centery + 20))
 
     pygame.draw.rect(win, WHITE, (0, 0, WIDTH, HEIGHT), 2, border_radius=10)
-    if pos1 is not None and pos2 is not None:
+    if pos1 and pos2:
         print(pos1, pos2, ccell[0][0], ccell[0][1], ccell[1][0], ccell[1][1])
     pygame.display.update()
 
